@@ -28,4 +28,58 @@ public class 接雨水 {
         }
         return sum;
     }
+
+    public int trap1(int[] height) {
+        if(height.length<=1) {
+            return 0;
+        }
+        int ans = 0, left=0, right=height.length-1;
+        int l_max=0, r_max=0;
+        while(left<=right){
+            l_max = Math.max(l_max, height[left]);
+            r_max = Math.max(r_max, height[right]);
+            if(l_max < r_max){
+                ans+=l_max-height[left];
+                left++;
+            }else{
+                ans+=r_max-height[right];
+                right--;
+            }
+        }
+        return ans;
+    }
+
+    /**
+     * 耗时最短
+     * @param height
+     * @return
+     */
+    public int trap2(int[] height) {
+        if(height.length<=1) {
+            return 0;
+        }
+        int res=0, left=0, right=height.length-1;
+        int lmax=height[left], rmax=height[right];
+        //假设成山状态，中间最大值，
+        while(left<right){
+            if(height[left]<height[right]){
+                //左半区，水量=左边局部最大-当前深度
+                if(height[left]>=lmax) {
+                    lmax=height[left];
+                } else {
+                    res+=lmax-height[left];
+                }
+                left++;
+            }else{
+                //右半区同理
+                if(height[right]>=rmax) {
+                    rmax=height[right];
+                } else {
+                    res+=rmax-height[right];
+                }
+                right--;
+            }
+        }
+        return res;
+    }
 }
