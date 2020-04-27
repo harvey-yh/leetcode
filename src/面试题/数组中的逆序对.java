@@ -112,6 +112,7 @@ public class 数组中的逆序对 {
         while(j >= mid + 1) {
             copy[k --] = nums[j --] ;
         }
+        System.out.println(count+" "+left + " " + right);
         return count + left + right ;
     }
 
