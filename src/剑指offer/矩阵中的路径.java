@@ -40,6 +40,41 @@ public class 矩阵中的路径 {
         isVisited[i][j] = false;
         return res;
     }
+
+//    /**
+//     * 数组形式给出
+//     */
+//    boolean[] visited ;
+//    public boolean hasPath(char[] matrix, int rows, int cols, char[] str){
+//        if (matrix == null ||rows < 1 || cols < 1 || str == null) {
+//            return false;
+//        }
+//        visited = new boolean[rows * cols];
+//        for(int i=0;i<rows;i++){
+//            for(int j=0;j<cols;j++){
+//                if (bfs(matrix, rows, cols, i, j, str, 0)) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
+//    public boolean bfs(char[] matrix, int rows, int cols, int i, int j, char[] str, int index){
+//        if(index == str.length){
+//            return true;
+//        }
+//        if(i<0 || j<0 || i == rows || j == cols || visited[i*cols+j] || matrix[i*cols+j] != str[index]){
+//            return false;
+//        }
+//        visited[i*cols+j] = true;
+//        boolean res = bfs(matrix, rows, cols,i + 1, j, str, index + 1)
+//                || bfs(matrix, rows, cols,i - 1, j, str, index + 1)
+//                || bfs(matrix, rows, cols, i, j + 1, str, index + 1)
+//                || bfs(matrix, rows, cols,i, j - 1, str, index + 1);
+//        visited[i*cols+j]  = false;
+//        return res;
+//    }
+
     public static void main(String[] args){
         char[][] board = new char[][]{{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}};
         System.out.println(exist(board, "ABCCED"));
