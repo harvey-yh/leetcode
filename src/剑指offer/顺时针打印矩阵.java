@@ -11,6 +11,7 @@ import java.util.stream.Stream;
  */
 public class 顺时针打印矩阵 {
     public static ArrayList<Integer> printMatrix(int [][] matrix) {
+        int[][] dict = new int[][]{{0,1}, {1,0}, {0,-1}, {-1,0}};
         ArrayList<Integer> res = new ArrayList<>();
         if(matrix == null || matrix.length == 0) {
             return res;
@@ -28,7 +29,6 @@ public class 顺时针打印矩阵 {
             for (int j = i+1; j < m-i; j++) {
                 res.add(matrix[j][(n-1)-i]);
             }
-
             for (int j = (n-1)-(i+1); j >= i && (m-1-i != i); j--) {
                 res.add(matrix[(m-1)-i][j]);
             }
