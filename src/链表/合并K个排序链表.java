@@ -1,9 +1,8 @@
 package 链表;
 
-import 字节跳动.链表与树.ListNode;
+import 公司.字节跳动.链表与树.ListNode;
 
 import java.util.Comparator;
-import java.util.List;
 import java.util.PriorityQueue;
 
 /**

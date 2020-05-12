@@ -1,6 +1,6 @@
 package 剑指offer;
 
-import 字节跳动.链表与树.ListNode;
+import 公司.字节跳动.链表与树.ListNode;
 
 /**
  * @author Harvey

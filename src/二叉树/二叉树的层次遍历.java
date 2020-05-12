@@ -1,7 +1,5 @@
 package 二叉树;
 
-import 字节跳动.链表与树.ListNode;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

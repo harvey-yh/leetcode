@@ -1,6 +1,6 @@
 package 位运算;
 
-import 字节跳动.链表与树.ListNode;
+import 公司.字节跳动.链表与树.ListNode;
 
 import java.util.ArrayList;
 import java.util.Collections;
