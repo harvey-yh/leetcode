@@ -44,6 +44,5 @@ public class 二叉搜索树与双向链表 {
             pRootOfTree.right = right;
         }
         return left != null ? left : pRootOfTree;
-
-    }序列化二叉树
+    }
 }

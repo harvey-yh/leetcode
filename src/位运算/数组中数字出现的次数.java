@@ -2,8 +2,7 @@ package 位运算;
 
 import 公司.字节跳动.链表与树.ListNode;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 /**
  * @author Harvey
@@ -60,5 +59,18 @@ public class 数组中数字出现的次数 {
         }
         Collections.reverse(res);
         return res;
+    }
+    public int MoreThanHalfNum_Solution(int [] array) {
+        if(array == null || array.length == 0){
+            return -1;
+        }
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0;i<array.length;i++){
+            map.put(array[i], map.getOrDefault(array[i], 0)+1);
+        }
+        int num = -1;
+        List<Map.Entry<Integer,Integer>> list = new ArrayList(map.entrySet());
+        Collections.sort(list, (o1, o2) -> (o2.getValue() - o1.getValue()));
+        return list.get(0).getKey();
     }
 }
