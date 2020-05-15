@@ -13,7 +13,7 @@ public class 快速排序 {
     }
     /**
      * 平均时间复杂度  O(n*log(n))
-     * 空间复杂度 O(1og(n))
+     * 空间复杂度 O(n*1og(n))
      * 不稳定
      * @param nums
      */
