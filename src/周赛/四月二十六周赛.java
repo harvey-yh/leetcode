@@ -99,9 +99,9 @@ public class 四月二十六周赛 {
      * @param k
      * @return
      */
-//    public int constrainedSubsetSum(int[] nums, int k) {
-//
-//    }
+    public int constrainedSubsetSum(int[] nums, int k) {
+        return 0;
+    }
 
     public static void main(String[] args){
         System.out.println(maxScore(new int[]{9,7,7,9,7,7,9}, 7));

@@ -1,4 +1,4 @@
-package 面试题;
+package 剑指offer;
 
 /**
  * @author Harvey
@@ -8,7 +8,6 @@ package 面试题;
 public class 数组中的逆序对 {
 
     private static int res = 0;
-
     /**
      * 利用归并排序计算逆序对
      * @param nums
@@ -16,13 +15,8 @@ public class 数组中的逆序对 {
      */
     public static int reversePairs(int[] nums) {
         int len = nums.length;
-
-        //为了不改变原数组 新copy个数组进行计算
-        int[] copy = new int[len];
-        System.arraycopy(nums,0,copy,0,copy.length);
-
         //归并排序
-        mergeSort(copy,0,len-1);
+        mergeSort(nums,0,len-1);
         return res;
     }
 
@@ -72,50 +66,34 @@ public class 数组中的逆序对 {
      * @param nums
      * @return
      */
-    public int reversePairs1(int[] nums) {
-        int len = nums.length;
-
-        //为了不改变原数组 新copy个数组进行计算
-        int[] copy = new int[len];
-        System.arraycopy(nums,0,copy,0,copy.length);
-
-        return mergeCount(nums, copy,0, nums.length - 1);
+    public int reversePairs1(int [] nums) {
+        return merge(nums, 0, nums.length - 1);
     }
-
-    private int mergeCount(int[] nums, int[] copy, int start, int end){
-        if(start >= end){
-            return 0 ;
+    int merge(int[] arr, int start, int end) {
+        if (start == end) {
+            return 0;
         }
+        int mid = (start + end) / 2;
+        int count = merge(arr, start, mid) + merge(arr, mid + 1, end);
 
-        int mid = (start + end) >> 1 ;
-        int left = mergeCount(copy, nums, start, mid) ;
-        int right = mergeCount(copy, nums, mid + 1 , end) ;
-        int count = 0 ;
-
-        //merge()
-        int i = mid;//遍历左区域指针
-        int j = end;//遍历右区域指针
-
-        int k = end ;//临时区域指针
-        while(i >= start && j >= mid + 1){
-            if(nums[i] > nums[j]){
-                count += j - mid ;
-                copy[k --] = nums[i --] ;
-            }else{
-                copy[k --] = nums[j --] ;
-            }
+        int[] temp = new int[end - start + 1];
+        int i = start, j = mid + 1, k = 0;
+        while (i <= mid && j <= end) {
+            count += arr[i] <= arr[j] ? j - (mid + 1) : 0;
+            count %= 1000000007;
+            temp[k++] = arr[i] <= arr[j] ? arr[i++] : arr[j++];
         }
-        //如果还有剩下没遍历的
-        while(i >= start) {
-            copy[k --] = nums[i --] ;
+        while (i <= mid) {
+            count += j - (mid + 1);
+            count %= 1000000007;
+            temp[k++] = arr[i++];
         }
-        while(j >= mid + 1) {
-            copy[k --] = nums[j --] ;
+        while (j <= end) {
+            temp[k++] = arr[j++];
         }
-        System.out.println(count+" "+left + " " + right);
-        return count + left + right ;
+        System.arraycopy(temp, 0, arr, start, end - start + 1);
+        return count;
     }
-
     public static void main(String[] args){
         System.out.println(reversePairs(new int[]{7,0,6,3,5,4}));
     }
