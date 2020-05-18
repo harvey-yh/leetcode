@@ -6,6 +6,11 @@ package 动态规划;
  * @slogan Drive business with technology, make business generate value.
  */
 public class 乘积最大子数组 {
+    /**
+     * [-2,3,-4]
+     * @param nums
+     * @return
+     */
     public static int maxProduct(int[] nums) {
         int n = nums.length;
         if (n == 0) {
