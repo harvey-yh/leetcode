@@ -8,7 +8,13 @@ import java.util.PriorityQueue;
  * @slogan Drive business with technology, make business generate value.
  */
 public class 数据流的中位数 {
+    /**
+     * 大顶堆
+     */
     PriorityQueue<Integer> A = new PriorityQueue<>((n1,n2)->n2-n1);
+    /**
+     * 小顶堆
+     */
     PriorityQueue<Integer> B = new PriorityQueue<>();
     public void Insert(Integer num) {
         if(A.size() != B.size()) {
