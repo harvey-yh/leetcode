@@ -1,8 +1,7 @@
 package 回溯;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Harvey
@@ -28,5 +27,8 @@ public class 子集II {
             backtrack(j + 1, nums, tmp);
             tmp.remove(tmp.size() - 1);
         }
+    }
+
+    public static void main(String[] args){
     }
 }
