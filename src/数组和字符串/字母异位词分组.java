@@ -8,24 +8,23 @@ import java.util.*;
  * @slogan Drive business with technology, make business generate value.
  */
 public class 字母异位词分组 {
-    public List<List<String>> groupAnagrams(String[] strs) {
-        Map<String, List<String>> res = new HashMap<>();
-        List<List<String>> list = new ArrayList<>();
+    public static List<List<String>> groupAnagrams(String[] strs) {
+        if(strs == null || strs.length == 0){
+            return new ArrayList<>();
+        }
+        HashMap<String, List<String>> map = new HashMap<>();
         for(String str : strs){
-            char[] chs = str.toCharArray();
-            Arrays.sort(chs);
-            String key = String.valueOf(chs);
-            if(!res.containsKey(key)){
-                res.put(key, new ArrayList<>());
+            char[] key = str.toCharArray();
+            Arrays.sort(key);
+            String key1 = String.copyValueOf(key);
+            if(!map.containsKey(key1)){
+                map.put(key1,new ArrayList<>() );
             }
-            res.get(key).add(str);
+            map.get(key1).add(str);
         }
-        //map的高效遍历方式entrySet
-        Iterator iter = res.entrySet().iterator();
-        while (iter.hasNext()) {
-            Map.Entry<String, List<String>> entry = (Map.Entry<String, List<String>>) iter.next();
-            list.add(entry.getValue());
-        }
-        return list;
+        return new ArrayList<>(map.values());
+    }
+    public static void main(String[] args){
+        System.out.println(groupAnagrams(new String[]{"eat","tea","tan","ate","nat","bat"}));
     }
 }
