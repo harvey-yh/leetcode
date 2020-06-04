@@ -1,4 +1,4 @@
-package 面试题;
+package 贪心算法;
 
 /**
  * @author Harvey

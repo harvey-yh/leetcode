@@ -1,4 +1,4 @@
-package 面试题;
+package 数组和字符串;
 
 /**
  * @author Harvey

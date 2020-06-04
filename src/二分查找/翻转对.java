@@ -1,4 +1,4 @@
-package 面试题;
+package 二分查找;
 
 /**
  * @author Harvey
