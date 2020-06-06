@@ -13,6 +13,7 @@ public class 最长上升子序列 {
         if(len < 2){
             return len;
         }
+        int res = 0;
         int [] dp = new int[len];
         Arrays.fill(dp, 1);
         for(int i=1;i<len;i++) {
@@ -21,13 +22,9 @@ public class 最长上升子序列 {
                     dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
             }
-        }
-        int res = 0;
-        for (int i = 0; i < len; i++) {
             res = Math.max(res, dp[i]);
         }
         return res;
-
     }
 
     public static int lengthOfLIS1(int[] nums) {

@@ -1,6 +1,8 @@
 package 公司.字节跳动.数组与排序;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Harvey
@@ -8,7 +10,35 @@ import java.util.Arrays;
  * @slogan Drive business with technology, make business generate value.
  */
 public class 最长连续序列 {
+    /**
+     * O(n)解法
+     * @param nums
+     * @return
+     */
     public int longestConsecutive(int[] nums) {
+        if(nums == null || nums.length == 0){
+            return 0;
+        }
+        int max = 0;
+        Set<Integer> set = new HashSet<>();
+        for(int num : nums){
+            set.add(num);
+        }
+        for(int num :nums){
+            if(!set.contains(num+1)){
+                int tmp = num-1;
+                int count = 1;
+                while(set.contains(tmp)){
+                    count++;
+                    tmp--;
+                }
+                max = max > count ? max : count;
+            }
+        }
+        return max;
+    }
+
+    public int longestConsecutive1(int[] nums) {
         if(nums.length == 0 || nums == null){
             return 0;
         }
