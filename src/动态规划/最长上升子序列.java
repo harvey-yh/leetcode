@@ -6,6 +6,8 @@ import java.util.Arrays;
  * @author Harvey
  * @date 2020/4/19
  * @slogan Drive business with technology, make business generate value.
+ *
+ * 这种类型的题目很容易包装，要看清本质，脱去包装看是不是一个最长上升子序列问题
  */
 public class 最长上升子序列 {
     public static int lengthOfLIS(int[] nums) {
