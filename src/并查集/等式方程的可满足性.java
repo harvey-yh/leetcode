@@ -1,50 +1,47 @@
 package 并查集;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
-
 /**
  * @author Harvey
  * @date 2020/6/8
  * @slogan Drive business with technology, make business generate value.
  */
 public class 等式方程的可满足性 {
+    static int[] parent;
     public static boolean equationsPossible(String[] equations) {
+        if(equations == null || equations.length == 0){
+            return false;
+        }
         int length = equations.length;
-        int[] parent = new int[26];
+        parent = new int[26];
         for (int i = 0; i < 26; i++) {
             parent[i] = i;
         }
-        for (String str : equations) {
-            if (str.charAt(1) == '=') {
-                int index1 = str.charAt(0) - 'a';
-                int index2 = str.charAt(3) - 'a';
-                union(parent, index1, index2);
+        for(int i=0;i<equations.length;i++){
+            if(equations[i].charAt(1) == '='){
+                union(equations[i].charAt(0)-'a', equations[i].charAt(3)-'a');
             }
         }
-        Arrays.stream(parent).forEach(System.out::println);
-        for (String str : equations) {
-            if (str.charAt(1) == '!') {
-                int index1 = str.charAt(0) - 'a';
-                int index2 = str.charAt(3) - 'a';
-                if (find(parent, index1) == find(parent, index2)) {
+        for(int i=0;i<equations.length;i++){
+            if(equations[i].charAt(1) == '!'){
+                if(find(equations[i].charAt(0)-'a') == find(equations[i].charAt(3)-'a')){
                     return false;
                 }
             }
         }
         return true;
+
     }
 
-    public static void union(int[] parent, int index1, int index2) {
-        parent[find(parent, index1)] = find(parent, index2);
+    public static void union(int x, int y) {
+        parent[find(x)] = find(y);
     }
 
-    public static int find(int[] parent, int index) {
-        while (parent[index] != index) {
-            parent[index] = parent[parent[index]];
-            index = parent[index];
+    public static int find(int i) {
+        while (parent[i] != i) {
+            parent[i] = parent[parent[i]];
+            i = parent[i];
         }
-        return index;
+        return i;
     }
     public static void main(String[] args){
         System.out.println(equationsPossible(new String[]{"a==b","b!=c","c==a"}));
