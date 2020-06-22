@@ -51,4 +51,47 @@ public class 字符串转换整数atoi {
         }
         return res * k;
     }
+
+    /**
+     * "4193 with words"
+     * @param str
+     * @return
+     */
+    public static int myAtoi1(String str) {
+        if(str == null || str.length() == 0){
+            return 0;
+        }
+        int symbol = 1;
+        str = str.trim();
+        if(str.length() == 0){
+            return 0;
+        }else if(str.charAt(0) == '-'){
+            symbol = -1;
+        }else if(str.charAt(0) != '+' && !Character.isDigit(str.charAt(0))){
+            return 0;
+        }
+
+        long res = 0;
+        int i = 0;
+        if(str.charAt(0) == '-' ||str.charAt(0) == '+'){
+            i++;
+        }
+        while(i < str.length() && str.charAt(i) != ' '){
+            if(!Character.isDigit(str.charAt(i))){
+                break;
+            }
+            res = res * 10 + str.charAt(i) - '0';
+            if(symbol == 1 && res > Integer.MAX_VALUE){
+                return Integer.MAX_VALUE;
+            }
+            if(symbol == -1 && -res < Integer.MIN_VALUE){
+                return Integer.MIN_VALUE;
+            }
+            i++;
+        }
+        return symbol*(int)res;
+    }
+    public static void main(String[] args){
+        System.out.println(myAtoi1("42"));
+    }
 }
