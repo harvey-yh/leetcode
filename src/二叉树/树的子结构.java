@@ -30,4 +30,23 @@ public class 树的子结构 {
         }
         return TreeHasTree(root1.left, root2.left) && TreeHasTree(root1.right, root2.right);
     }
+
+    // ----------------------------------------------------------------------------------------------------------------
+
+
+    public boolean isSubStructure(TreeNode A, TreeNode B) {
+        if(A == null || B == null){
+            return false;
+        }
+        return helper(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B);
+    }
+    public boolean helper(TreeNode A, TreeNode B){
+        if(B == null){
+            return true;
+        }
+        if(A == null){
+            return false;
+        }
+        return A.val == B.val && helper(A.left, B.left) && helper(A.right, B.right);
+    }
 }

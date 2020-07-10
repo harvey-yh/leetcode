@@ -10,14 +10,14 @@ public class 二叉树的最小深度 {
         if(root == null){
             return 0;
         }
-        if (root.left == null && root.right != null) {
-            return 1 + minDepth(root.right);
+        // 左子树为null，不参与比较
+        if(root.left == null && root.right != null){
+            return minDepth(root.right)+1;
         }
-        if (root.right == null && root.left != null) {
-            return 1 + minDepth(root.left);
+        // 右子树为null，不参与比较
+        if(root.right == null && root.left != null){
+            return minDepth(root.left)+1;
         }
-        int left_depth = minDepth(root.left);
-        int right_depth = minDepth(root.right);
-        return Math.min(left_depth, right_depth) + 1;
+        return Math.min(minDepth(root.left), minDepth(root.right))+1;
     }
 }

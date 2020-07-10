@@ -1,5 +1,7 @@
 package 二叉树;
 
+import java.util.Stack;
+
 /**
  * @author Harvey
  * @date 2020/6/13
@@ -29,6 +31,28 @@ public class 二叉树展开成链表 {
                 // 考虑下一个节点
                 root = root.right;
             }
+        }
+    }
+    public void flatten1(TreeNode root) {
+        if (root == null){
+            return;
+        }
+        Stack<TreeNode> s = new Stack<>();
+        s.push(root);
+        TreeNode pre = null;
+        while (!s.isEmpty()) {
+            TreeNode temp = s.pop();
+            if(pre != null){
+                pre.right = temp;
+                pre.left = null;
+            }
+            if (temp.right != null){
+                s.push(temp.right);
+            }
+            if (temp.left != null){
+                s.push(temp.left);
+            }
+            pre = temp;
         }
     }
 }

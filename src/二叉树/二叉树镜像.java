@@ -6,21 +6,19 @@ package 二叉树;
  * @slogan Drive business with technology, make business generate value.
  */
 public class 二叉树镜像 {
-    public void Mirror(TreeNode root) {
-        if(root == null) {
-            return;
+    public TreeNode mirrorTree(TreeNode root) {
+        if(root == null){
+            return null;
         }
-        if(root.left == null && root.right == null) {
-            return;
-        }
-        TreeNode pTemp = root.left;
+        TreeNode tmp = root.left;
         root.left = root.right;
-        root.right = pTemp;
-        if(root.left != null) {
-            Mirror(root.left);
+        root.right = tmp;
+        if(root.left != null){
+            mirrorTree(root.left);
         }
-        if(root.right != null) {
-            Mirror(root.right);
+        if(root.right != null){
+            mirrorTree(root.right);
         }
+        return root;
     }
 }

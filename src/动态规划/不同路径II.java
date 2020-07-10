@@ -34,7 +34,8 @@ public class 不同路径II {
         }
         return dp[m-1][n-1];
     }
+
     public static void main(String[] args){
-        System.out.println(uniquePathsWithObstacles(new int[][]{{1,0}}));
+        System.out.println(uniquePathsWithObstacles(new int[][]{{0,0,0},{0,1,0},{0,0,0}}));
     }
 }

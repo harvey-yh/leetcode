@@ -15,6 +15,6 @@ public class 路径总和 {
             return sum == 0;
         }
         return hasPathSum(root.left, sum) || hasPathSum(root.right, sum);
-
     }
+
 }

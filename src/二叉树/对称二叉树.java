@@ -21,4 +21,5 @@ public class 对称二叉树 {
         }
         return left.val == right.val && dp(left.left, right.right) && dp(left.right, right.left);
     }
+
 }

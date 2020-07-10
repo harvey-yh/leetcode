@@ -1,6 +1,5 @@
 package 数组和字符串;
 
-import java.util.Arrays;
 
 /**
  * @author Harvey
@@ -9,13 +8,12 @@ import java.util.Arrays;
  */
 public class 长度最小的子数组 {
     public static int minSubArrayLen(int s, int[] nums) {
-        int n = nums.length;
-        if (n == 0) {
+        if (nums == null || nums.length == 0) {
             return 0;
         }
         int left = 0, right = 0, sum = 0;
         int min = Integer.MAX_VALUE;
-        while (right < n) {
+        while (right < nums.length) {
             sum += nums[right];
             right++;
             while (sum >= s) {
