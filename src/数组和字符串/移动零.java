@@ -45,6 +45,10 @@ public class 移动零 {
             nums[i] = 0;
         }
     }
+
+
+
+
     public static void main(String[] args){
         int[] x = new int[]{2,1};
         moveZeroes(x);

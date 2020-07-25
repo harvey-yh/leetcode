@@ -17,7 +17,22 @@ public class 完全平方数 {
         }
         return dp[n];
     }
+
+    public static int numSquares1(int n) {
+        int count = 0;
+        for(int i = (int)Math.sqrt(n);i>=0;i--){
+            while(n > 0 && i*i < n){
+                n -= i*i;
+                count++;
+            }
+            if(n == 0){
+                break;
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args){
-        System.out.println(numSquares(numSquares(12)));
+        System.out.println(numSquares1(12));
     }
 }

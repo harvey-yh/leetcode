@@ -11,6 +11,11 @@ import java.util.Stack;
  * @slogan Drive business with technology, make business generate value.
  */
 public class 二叉树的中序遍历 {
+    /**
+     * 非递归
+     * @param root
+     * @return
+     */
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         TreeNode curr = root;
@@ -34,7 +39,11 @@ public class 二叉树的中序遍历 {
     }
 
     List<Integer> res = new ArrayList<>();
-
+    /**
+     * 递归
+     * @param root
+     * @return
+     */
     public List<Integer> inorderTraversal1(TreeNode root) {
         if(root == null){
             return res;
@@ -44,22 +53,25 @@ public class 二叉树的中序遍历 {
         inorderTraversal(root.right);
         return res;
     }
+
+    /**
+     * 非递归
+     * @param root
+     * @return
+     */
     public List<Integer> inorderTraversal2(TreeNode root) {
-        List<Integer> res = new ArrayList<>();
-        if (root == null) {
-            return res;
-        }
-        Stack<TreeNode> s = new Stack<>();
-        while (root != null|| !s.isEmpty()) {
-            while (root != null) {
-                res.add(root.val);
-                s.push(root);
-                root = root.right;
+        List < Integer > res = new ArrayList <> ();
+        Stack < TreeNode > stack = new Stack <> ();
+        TreeNode curr = root;
+        while (curr != null || !stack.isEmpty()) {
+            while (curr != null) {
+                stack.push(curr);
+                curr = curr.left;
             }
-            root = s.pop();
-            root = root.left;
+            curr = stack.pop();
+            res.add(curr.val);
+            curr = curr.right;
         }
-        Collections.reverse(res);
         return res;
     }
 }

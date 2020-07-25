@@ -31,9 +31,7 @@ public class 根据身高重建队列 {
          * [5,0], [7,0], [5,2], [6,1], [7,1]
          * [5,0], [7,0], [5,2], [6,1], [4,4], [7,1]
          */
-        Arrays.sort(people, (o1, o2) -> {
-            return o1[0] == o2[0] ? o1[1] - o2[1] : o2[0] - o1[0];
-        });
+        Arrays.sort(people, (o1, o2) -> o1[0] == o2[0] ? o1[1] - o2[1] : o2[0] - o1[0]);
         List<int[]> list = new ArrayList<>();
         for (int[] i : people) {
             list.add(i[1], i);

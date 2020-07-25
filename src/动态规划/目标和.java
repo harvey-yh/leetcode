@@ -7,9 +7,9 @@ package 动态规划;
  */
 public class 目标和 {
     /**
-     *  sum(+) - sum(-) = S
-     *  使用+的数字和减去使用-的数字和的总和等于S
-     *  sum(+) + sum(-) + sum(+) - sum(-) = S + sum(+) + sum(-)
+     * sum(+) - sum(-) = S
+     * 使用+的数字和减去使用-的数字和的总和等于S
+     * sum(+) + sum(-) + sum(+) - sum(-) = S + sum(+) + sum(-)
      * 2 * sum(P) = S + sum(nums)
      * 因此只要找到一个子集，令它们都取正号，并且和等于 (S + sum(nums))/2，就证明存在解。
      *
@@ -30,7 +30,7 @@ public class 目标和 {
         dp[0] = 1;
         for (int num : nums) {
             for (int i = S; i >= num; i--) {
-                dp[i] = dp[i] + dp[i - num];
+                dp[i] += dp[i - num];
             }
         }
         return dp[S];

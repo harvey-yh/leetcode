@@ -1,5 +1,7 @@
 package 动态规划;
 
+import java.util.Arrays;
+
 /**
  * @author Harvey
  * @date 2020/4/22
@@ -72,6 +74,54 @@ public class 戳气球 {
             max = Math.max(max,(start-1<0 ? 1 : nums[start-1])*nums[i]*(end+1>nums.length-1 ? 1 : nums[end+1]) + (start>i-1 ? 0 : dp[start][i-1]) + (end < i+1 ? 0 : dp[i+1][end]));
         }
         dp[start][end] = max;
+    }
+
+    int[][] dp;
+    public int maxCoins2(int[] nums) {
+        if(nums == null || nums.length == 0){
+            return 0;
+        }
+        int[] newNums = new int[nums.length+2];
+        newNums[0] = 1;
+        System.arraycopy(nums, 1, newNums, 0, nums.length);
+        newNums[nums.length+1] = 1;
+        dp = new int[nums.length+2][nums.length+2];
+        return helper(newNums, 1, nums.length);
+
+    }
+    public int helper(int[] newNums, int i, int j){
+        if(i > j){
+            return 0;
+        }
+        if(dp[i][j] > 0){
+            return dp[i][j];
+        }
+        for(int k=i;k<=j;k++){
+            int left = helper(newNums, i, k-1);
+            int right = helper(newNums, k+1, j);
+            int sum = newNums[k]*newNums[i-1]*newNums[j+1];
+            dp[i][j] = Math.max(dp[i][j], left + right + sum);
+        }
+        return dp[i][j];
+    }
+
+    public int maxCoins3(int[] nums) {
+        if(nums == null || nums.length == 0){
+            return 0;
+        }
+        int n = nums.length;
+        int[] newNums = new int[n+2];
+        newNums[0] = newNums[n+1] = 1;
+        System.arraycopy(nums, 0, newNums, 1, n);
+        int[][] dp = new int[n+2][n+2];
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = i + 2; j <= n + 1; j++) {
+                for (int k = i + 1; k < j; k++) {
+                    dp[i][j] = Math.max(dp[i][j], (dp[i][k] + dp[k][j] + newNums[i] * newNums[k] * newNums[j]));
+                }
+            }
+        }
+        return dp[0][n+1];
     }
 
     public static void main(String[] args){

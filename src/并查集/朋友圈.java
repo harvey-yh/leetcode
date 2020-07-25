@@ -8,19 +8,16 @@ import 设计.MedianFinder;
  * @slogan Drive business with technology, make business generate value.
  */
 public class 朋友圈 {
-    int count;
-    int[] parent;
-    public int findCircleNum( int[][] M){
-        if (M == null || M.length == 0 || M[0].length == 0 || M.length != M[0].length) {
-            return 0;
-        }
+    private int count;
+    private int[] parent;
+    public int findCircleNum(int[][] M){
         count = M.length;
         parent = new int[M.length];
         for (int i = 0; i < M.length; i++) {
             parent[i] = i;
         }
         for (int i = 0; i < M.length; i++) {
-            for (int j = 0; j < M.length; j++) {
+            for (int j = i; j < M.length; j++) {
                 if (M[i][j] == 1) {
                     union(i, j);
                 }
@@ -29,7 +26,7 @@ public class 朋友圈 {
         return count;
     }
 
-    public void union( int x, int y){
+    private void union( int x, int y){
         int parent1 = find(x);
         int parent2 = find(y);
         if (parent1 != parent2) {
@@ -38,7 +35,7 @@ public class 朋友圈 {
         }
     }
 
-    public int find( int p){
+    private int find( int p){
         while (p != parent[p]) {
             parent[p] = parent[parent[p]];
             p = parent[p];

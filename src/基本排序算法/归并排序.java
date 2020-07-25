@@ -8,16 +8,13 @@ import java.util.Arrays;
  * @slogan Drive business with technology, make business generate value.
  */
 public class 归并排序 {
-    public static void merge(int[] nums) {
-        mergeSort(nums, 0, nums.length-1);
-    }
     /**
      * 平均时间复杂度  O(n*log(n))
      * 空间复杂度 O(n)
      * 稳定
      * @param nums
      */
-    public static void mergeSort(int[] nums, int start, int end) {
+    private static void mergeSort(int[] nums, int start, int end) {
         //判断拆分的不为最小单位
         if (end - start > 0) {
             //再一次拆分，知道拆成一个一个的数据
@@ -60,6 +57,11 @@ public class 归并排序 {
             }
         }
     }
+
+    private static void merge(int[] nums) {
+        mergeSort(nums, 0, nums.length-1);
+    }
+
     public static void main(String[] args){
         int[] nums = new int[]{8, 5, 3, 2, 4, 9, 1, 7};
         merge(nums);
