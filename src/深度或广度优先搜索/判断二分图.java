@@ -1,4 +1,4 @@
-package 深度或广度优先遍历;
+package 深度或广度优先搜索;
 
 import java.util.ArrayList;
 import java.util.Arrays;
