@@ -6,31 +6,38 @@ package 二分查找;
  * @slogan Drive business with technology, make business generate value.
  */
 public class 在排序数组中查找元素的第一个和最后一个位置 {
+    /**
+     * 分别用二分法找到左边的边界和右边的边界
+     * @param nums
+     * @param target
+     * @return
+     */
     public int[] searchRange(int[] nums, int target) {
-        int left=0, right=nums.length-1;
-        int[] result = new int[]{-1,-1};
-        while(left <= right){
-            int mid = left+(right-left)/2;
-            if(target > nums[mid]){
-                left = mid + 1;
-            }else if(target < nums[mid]){
-                right = mid -1;
+        int[] res = {-1,-1};
+        if(nums == null || nums.length == 0){
+            return res;
+        }
+        int l = 0, r = nums.length-1;
+        while(l<r){
+            int mid = (l+r) >> 1;
+            if(nums[mid] >= target){
+                r = mid;
             }else{
-                if(nums[left] != target){
-                    left++;
-                }else{
-                    result[0] = left;
-                }
-                if(nums[right] != target){
-                    right--;
-                }else{
-                    result[1] = right;
-                }
-            }
-            if(result[0] != -1 && result[1] != -1){
-                break;
+                l = mid+1;
             }
         }
-        return result;
+        res[0] = nums[l] == target ? l : -1;
+        l = 0;
+        r = nums.length-1;
+        while(l<r){
+            int mid = (l+r+1) >> 1;
+            if(nums[mid] <= target){
+                l = mid;
+            }else{
+                r = mid-1;
+            }
+        }
+        res[1] = nums[l] == target ? l : -1;
+        return res;
     }
 }

@@ -1,7 +1,5 @@
 package 并查集;
 
-import 设计.MedianFinder;
-
 /**
  * @author Harvey
  * @date 2020/6/8
@@ -17,7 +15,7 @@ public class 朋友圈 {
             parent[i] = i;
         }
         for (int i = 0; i < M.length; i++) {
-            for (int j = i; j < M.length; j++) {
+            for (int j = i+1; j < M.length; j++) {
                 if (M[i][j] == 1) {
                     union(i, j);
                 }

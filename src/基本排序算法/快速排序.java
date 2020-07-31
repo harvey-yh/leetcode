@@ -1,6 +1,7 @@
 package 基本排序算法;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * @author Harvey
@@ -15,38 +16,34 @@ public class 快速排序 {
      * 不稳定
      * @param nums
      */
-    private static void partition(int[] nums, int low, int high) {
-        int i=low, j=high;
-        if(low < high){
-            int tmp = nums[i];
-            while(i!=j){
-                while(j>i && nums[j] > nums[i]){
-                    j--;
-                }
-                if(j>i){
-                    nums[i] = nums[j];
-                    i++;
-                }
-                while(i<j && nums[i] < nums[j]){
-                    i++;
-                }
-                if(i<j){
-                    nums[j] = nums[i];
-                    j--;
-                }
-                nums[i] = tmp;
-                partition(nums, low, i-1);
-                partition(nums,i+1,high);
-            }
+    private static void partition(int[] nums, int start, int end) {
+        if (start >= end) {
+            return;
         }
+        int l=start, r=end;
+        int tmp = nums[l];
+        while(l < r){
+            while(l<r && nums[r] >= tmp){
+                r--;
+            }
+            nums[l] = nums[r];
+            while(l<r && nums[l] < tmp){
+                l++;
+            }
+            nums[r] = nums[l];
+        }
+        nums[l] = tmp;
+        for (int num : nums) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+        partition(nums, start, l-1);
+        partition(nums,l+1, end);
     }
-    private static void quickSort(int[] nums){
+
+    public static void main(String[] args){
+        int[] nums = new int[]{25, 84, 21, 47, 15, 27, 68, 35, 20};
         partition(nums, 0, nums.length-1);
     }
-    
-    public static void main(String[] args){
-        int[] nums = new int[]{8, 5, 3, 2, 4, 9, 1, 7};
-        quickSort(nums);
-        Arrays.stream(nums).forEach(System.out::println);
-    }
+
 }
