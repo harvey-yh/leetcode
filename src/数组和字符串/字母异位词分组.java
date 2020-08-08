@@ -16,7 +16,7 @@ public class 字母异位词分组 {
         for(String str : strs){
             char[] key = str.toCharArray();
             Arrays.sort(key);
-            String key1 = String.copyValueOf(key);
+            String key1 = String.valueOf(key);
             if(!map.containsKey(key1)){
                 map.put(key1,new ArrayList<>() );
             }
@@ -24,6 +24,7 @@ public class 字母异位词分组 {
         }
         return new ArrayList<>(map.values());
     }
+
     public static void main(String[] args){
         System.out.println(groupAnagrams(new String[]{"eat","tea","tan","ate","nat","bat"}));
     }

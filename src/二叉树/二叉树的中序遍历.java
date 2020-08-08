@@ -60,8 +60,8 @@ public class 二叉树的中序遍历 {
      * @return
      */
     public List<Integer> inorderTraversal2(TreeNode root) {
-        List < Integer > res = new ArrayList <> ();
-        Stack < TreeNode > stack = new Stack <> ();
+        List <Integer> res = new ArrayList <> ();
+        Stack <TreeNode> stack = new Stack <> ();
         TreeNode curr = root;
         while (curr != null || !stack.isEmpty()) {
             while (curr != null) {

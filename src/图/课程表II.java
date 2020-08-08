@@ -12,7 +12,7 @@ public class 课程表II {
         if (numCourses == 0) {
             return new int[0];
         }
-        HashMap<Integer, ArrayList<Integer>> map = new HashMap();
+        HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
         int[] inDegrees = new int[numCourses];
         // 建立入度表
         for (int[] p : prerequisites) {

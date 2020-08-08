@@ -16,17 +16,17 @@ public class 归并排序 {
      */
     private static void mergeSort(int[] nums, int start, int end) {
         //判断拆分的不为最小单位
-        if (end - start > 0) {
+        if (start < end) {
             //再一次拆分，知道拆成一个一个的数据
             mergeSort(nums, start, (start + end) / 2);
             mergeSort(nums, (start + end) / 2 + 1, end);
             //记录开始/结束位置
             int left = start;
             int right = (start + end) / 2 + 1;
-            //记录每个小单位的排序结果
             int index = 0;
+            //记录每个小单位的排序结果
             int[] result = new int[end - start + 1];
-            //如果查分后的两块数据，都还存在
+            //如果拆分后的两块数据，都还存在
             while (left <= (start + end) / 2 && right <= end) {
                 //比较两块数据的大小，然后赋值，并且移动下标
                 if (nums[left] <= nums[right]) {
@@ -63,7 +63,7 @@ public class 归并排序 {
     }
 
     public static void main(String[] args){
-        int[] nums = new int[]{8, 5, 3, 2, 4, 9, 1, 7};
+        int[] nums = new int[]{25, 84, 21, 47, 15, 27, 68, 35, 20};
         merge(nums);
         Arrays.stream(nums).forEach(System.out::println);
     }
