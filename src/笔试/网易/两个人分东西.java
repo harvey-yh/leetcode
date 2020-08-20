@@ -21,7 +21,7 @@ public class 两个人分东西 {
                 val[i] = sc.nextInt();
                 sum += val[i];
             }
-            boolean[] dp = new boolean[1500005];
+            boolean[] dp = new boolean[sum+1];
             dp[0] = true;
             for(int i=0;i<n;i++){
                 for(int j=sum;j>=val[i];j--){

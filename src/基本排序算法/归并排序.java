@@ -40,15 +40,14 @@ public class 归并排序 {
                 index++;
             }
             //当某一块数据不存在了时
-            while (left <= (start + end) / 2 || right <= end) {
-                //直接赋值到记录下标
-                if (left <= (start + end) / 2) {
-                    result[index] = nums[left];
-                    left++;
-                } else {
-                    result[index] = nums[right];
-                    right++;
-                }
+            while (left <= (start + end) / 2) {
+                result[index] = nums[left];
+                left++;
+                index++;
+            }
+            while (right <= end) {
+                result[index] = nums[right];
+                right++;
                 index++;
             }
             //最后将新的数据赋值给原来的列表，并且是对应分块后的下标。
@@ -58,13 +57,9 @@ public class 归并排序 {
         }
     }
 
-    private static void merge(int[] nums) {
-        mergeSort(nums, 0, nums.length-1);
-    }
-
     public static void main(String[] args){
         int[] nums = new int[]{25, 84, 21, 47, 15, 27, 68, 35, 20};
-        merge(nums);
+        mergeSort(nums, 0, nums.length-1);
         Arrays.stream(nums).forEach(System.out::println);
     }
 }

@@ -35,6 +35,7 @@ public class 朋友圈 {
 
     private int find( int p){
         while (p != parent[p]) {
+            //路径压缩
             parent[p] = parent[parent[p]];
             p = parent[p];
         }

@@ -1,5 +1,6 @@
 package 笔试.京东;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 /**
@@ -32,9 +33,10 @@ public class 数列和 {
             n = Integer.valueOf(s[0]);
             sum = 0;
             for (int i = 1; i <= n; i++) {
-                sum += 1.0 / (5*(2*n-1)) - 1.0 / (5*2*n);
+                sum += 1 / (5.0*(2*n-1)) - 1 / (5.0*2*n);
             }
-            System.out.println(String.format("%.4f",sum));
+            BigDecimal b = new BigDecimal(sum);
+            System.out.println(String.format("%.4f",b.setScale(4,BigDecimal.ROUND_HALF_UP).doubleValue()));
         }
     }
 }
