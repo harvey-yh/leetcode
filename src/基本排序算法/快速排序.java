@@ -16,7 +16,7 @@ public class 快速排序 {
      * 不稳定
      * @param nums
      */
-    private static void partition(int[] nums, int start, int end) {
+    private static void qucikSort(int[] nums, int start, int end) {
         if (start >= end) {
             return;
         }
@@ -26,24 +26,28 @@ public class 快速排序 {
             while(l<r && nums[r] >= tmp){
                 r--;
             }
-            nums[l] = nums[r];
+            if(l < r){
+                nums[l++] = nums[r];
+            }
             while(l<r && nums[l] < tmp){
                 l++;
             }
-            nums[r] = nums[l];
+            if(l<r){
+                nums[r--] = nums[l];
+            }
         }
         nums[l] = tmp;
         for (int num : nums) {
             System.out.print(num + " ");
         }
         System.out.println();
-        partition(nums, start, l-1);
-        partition(nums,l+1, end);
+        qucikSort(nums, start, l-1);
+        qucikSort(nums,l+1, end);
     }
 
     public static void main(String[] args){
         int[] nums = new int[]{25, 84, 21, 47, 15, 27, 68, 35, 20};
-        partition(nums, 0, nums.length-1);
+        qucikSort(nums, 0, nums.length-1);
     }
 
 }
