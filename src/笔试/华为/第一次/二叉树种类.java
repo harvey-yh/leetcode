@@ -1,4 +1,4 @@
-package 笔试.华为;
+package 笔试.华为.第一次;
 
 import java.util.Scanner;
 import java.util.TreeMap;

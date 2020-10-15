@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class 两个数组的交集 {
     public int[] intersection(int[] nums1, int[] nums2) {
         int[] res = new int[nums1.length < nums2.length ? nums1.length : nums2.length];
-        HashMap<Integer, Integer> map = new HashMap();
+        HashMap<Integer, Integer> map = new HashMap<>();
         for (int num : nums1) {
             map.put(num, 1);
         }

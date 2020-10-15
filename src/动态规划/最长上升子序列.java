@@ -34,16 +34,16 @@ public class 最长上升子序列 {
         int[] dp = new int[nums.length];
         for(int num:nums){
             int i=0,j=res;
-            while(i<j){
+            while(i < j){
                 int mid = (i+j)/2;
-                if(dp[mid]<num){
-                    i=mid+1;
+                if(dp[mid] < num){
+                    i = mid+1;
                 }else{
-                    j=mid;
+                    j = mid;
                 }
             }
-            dp[i]=num;
-            if(i==res) {
+            dp[i] = num;
+            if(i == res) {
                 res++;
             }
         }

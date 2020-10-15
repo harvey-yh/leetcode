@@ -8,6 +8,11 @@ import java.util.LinkedList;
  * @slogan Drive business with technology, make business generate value.
  */
 public class 填充每个节点的下一个右侧节点指针 {
+    /**
+     * 非递归写法
+     * @param root
+     * @return
+     */
     public Node connect(Node root) {
         if(root==null){
             return null;
@@ -32,5 +37,26 @@ public class 填充每个节点的下一个右侧节点指针 {
             }
         }
         return root;
+    }
+
+
+    /**
+     * 递归写法
+     */
+    public Node connect1(Node root) {
+        Node node = root;
+        helper(node);
+        return root;
+    }
+    public void helper(Node root){
+        if(root == null || root.left == null){
+            return ;
+        }
+        root.left.next = root.right;
+        if(root.next != null){
+            root.right.next = root.next.left;
+        }
+        helper(root.left);
+        helper(root.right);
     }
 }

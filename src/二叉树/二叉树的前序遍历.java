@@ -30,8 +30,8 @@ public class 二叉树的前序遍历 {
         Stack<TreeNode> s = new Stack<>();
         while (root != null || !s.isEmpty()) {
             while (root != null) {
-                res.add(root.val);
                 s.push(root);
+                res.add(root.val);
                 root = root.left;
             }
             root = s.pop();

@@ -17,15 +17,14 @@ public class 全排列 {
     }
     public void backtrack(LinkedList<Integer> list, int[] nums){
         if(list.size() == nums.length){
-            res.add(new LinkedList(list));
-
+            res.add(new LinkedList<>(list));
             return;
         }
-        for(int i=0;i<nums.length;i++){
-            if(list.contains(nums[i])){
+        for (int num : nums) {
+            if (list.contains(num)) {
                 continue;
             }
-            list.add(nums[i]);
+            list.add(num);
             backtrack(list, nums);
             list.removeLast();
         }

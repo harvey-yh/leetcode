@@ -45,4 +45,25 @@ public class 二叉搜索树中第K小的元素 {
         }
         return -1;
     }
+
+    /**
+     * 递归方法
+     */
+    int res = 0, t = 0;
+    public int kthSmallest1(TreeNode root, int k) {
+        order(root, k);
+        return res;
+    }
+    public void order(TreeNode root, int k){
+        if(root == null){
+            return ;
+        }
+        order(root.left, k);
+        t++;
+        if(t == k){
+            res = root.val;
+            return;
+        }
+        order(root.right, k);
+    }
 }

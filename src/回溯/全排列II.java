@@ -11,9 +11,7 @@ import java.util.List;
  */
 public class 全排列II {
     List<List<Integer>> res = new LinkedList<>();
-
     public List<List<Integer>> permuteUnique(int[] nums) {
-        // 排序的目的是为了判断重复数字是否选过
         Arrays.sort(nums);
         boolean[] used = new boolean[nums.length];
         backtrack(new LinkedList<>(), nums, used);
@@ -21,7 +19,7 @@ public class 全排列II {
     }
     public void backtrack(LinkedList<Integer> list, int[] nums, boolean[] used){
         if(list.size() == nums.length){
-            res.add(new LinkedList(list));
+            res.add(new LinkedList<>(list));
             return;
         }
         for(int i=0;i<nums.length;i++){

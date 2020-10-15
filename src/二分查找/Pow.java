@@ -10,15 +10,12 @@ public class Pow {
         if(n==0){
             return 1.00000;
         }
-
         if(n==1){
             return x;
         }
-
         if(n==-1){
             return 1.00000/x;
         }
-
         if(n % 2 == 0){
             double result=myPow(x,n/2);
             return result * result;

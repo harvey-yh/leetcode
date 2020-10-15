@@ -37,10 +37,6 @@ public class 快速排序 {
             }
         }
         nums[l] = tmp;
-        for (int num : nums) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
         qucikSort(nums, start, l-1);
         qucikSort(nums,l+1, end);
     }

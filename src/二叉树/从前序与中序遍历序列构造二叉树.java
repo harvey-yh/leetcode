@@ -10,7 +10,6 @@ import java.util.HashMap;
 public class 从前序与中序遍历序列构造二叉树 {
     HashMap<Integer,Integer> memo = new HashMap<>();
     int[] pre;
-
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         for(int i = 0;i < inorder.length; i++) {
             memo.put(inorder[i], i);

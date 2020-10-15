@@ -27,17 +27,19 @@ public class 二叉树的后序遍历 {
         if(root == null){
             return res;
         }
-        while(root != null && !s.isEmpty()){
-            if(root != null){
+        while(root != null || !s.isEmpty()){
+            while(root != null){
                 s.push(root);
                 root = root.left;
-            }else{
-                root = s.pop();
+            }
+            root = s.pop();
+            // 如果没有右孩子或者右孩子被访问过了
+            if (root.right == null ||(res.size() != 0 && res.get(res.size() - 1).equals(root.right.val)) ) {
                 res.add(root.val);
+                root = null;
+            }  else {
+                s.push(root);
                 root = root.right;
-                if(root != null){
-                    s.push(root);
-                }
             }
         }
         return res;
